@@ -9,6 +9,32 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+// ====================== SIMPLE ADMIN AUTH ======================
+const ADMIN_USER = "cyber_snake";       // change if you want
+const ADMIN_PASS = "CyberSnake@123";    // change if you want
+
+function requireAdminAuth(req, res, next) {
+  const authHeader = req.headers.authorization;
+
+  // No auth header → ask browser for username/password
+  if (!authHeader) {
+    res.set("WWW-Authenticate", 'Basic realm="CyberSnake Admin"');
+    return res.status(401).send("Authentication required");
+  }
+
+  // authHeader looks like "Basic base64(username:password)"
+  const base64 = authHeader.split(" ")[1] || "";
+  const [user, pass] = Buffer.from(base64, "base64").toString().split(":");
+
+  if (user === ADMIN_USER && pass === ADMIN_PASS) {
+    return next(); // allowed
+  }
+
+  // Wrong credentials
+  res.set("WWW-Authenticate", 'Basic realm="CyberSnake Admin"');
+  return res.status(401).send("Invalid credentials");
+}
+
 // ====================== DB SETUP ======================
 const dbFile = path.join(__dirname, "cyber_snake.db");
 const db = new sqlite3.Database(dbFile);
@@ -85,6 +111,17 @@ db.serialize(() => {
       }
     }
   );
+});
+
+// ====================== PROTECTED ADMIN ROUTES ======================
+// /admin → protected view of admin.html
+app.get("/admin", requireAdminAuth, (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "frontend", "public", "admin.html"));
+});
+
+// Also protect direct /admin.html URL
+app.get("/admin.html", requireAdminAuth, (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "frontend", "public", "admin.html"));
 });
 
 // ====================== STATIC FRONT-END ======================
@@ -590,7 +627,6 @@ io.on("connection", (socket) => {
 
 // ====================== START SERVER ======================
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
