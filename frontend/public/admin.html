@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin – Cyber Snake Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>👩‍💻 Admin Dashboard – Cyber Snake</h1>
+    <p>Open while players are playing to see live info.</p>
+
+    <!-- Event control -->
+    <section id="event-panel">
+      <h2>Event Control</h2>
+      <p>
+        Current event:
+        <strong><span id="currentEventName">Loading...</span></strong>
+      </p>
+
+      <div class="event-actions">
+        <input
+          id="newEventName"
+          type="text"
+          placeholder="New event name (e.g. Cyber Suraksha)"
+        />
+        <button id="createEventBtn" class="primary-btn">
+          Create & Switch to New Event
+        </button>
+      </div>
+
+      <h3 style="margin-top: 16px;">All Events</h3>
+      <table id="eventsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Event Name</th>
+            <th>Created At</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <h2>Leaderboard (Current Event)</h2>
+    <table id="leaderboardTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Org</th>
+          <th>Designation</th>
+          <th>Score</th>
+          <th>Finished?</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Latest Answers</h2>
+    <div id="answersLog" class="log-box"></div>
+
+    <h2>Event History & Export</h2>
+    <section id="history-panel">
+      <div class="event-actions">
+        <select id="historyEventSelect"></select>
+        <button id="viewHistoryBtn" class="primary-btn">
+          View Results
+        </button>
+        <button id="downloadCsvBtn" class="primary-btn">
+          Download CSV (Excel)
+        </button>
+      </div>
+
+      <div class="event-actions" style="margin-top:10px;">
+        <input
+          id="historySearch"
+          type="text"
+          placeholder="Search by name / org / designation"
+          style="flex:1;"
+        />
+      </div>
+
+      <table id="historyTable" style="margin-top:10px;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Org</th>
+            <th>Designation</th>
+            <th>Final Score</th>
+            <th>Finished?</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- IMPORTANT: v=5 to bypass browser cache -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="admin.js?v=5"></script>
+</body>
+</html>

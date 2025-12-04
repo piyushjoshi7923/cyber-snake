@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cyber Security Snake Game – Game-Based Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="main-header">
+      <span class="logo-shield">🛡️</span>
+      <h1>Cyber Security Snake Game – Game-Based Learning</h1>
+    </header>
+
+    <!-- CURRENT EVENT DISPLAY -->
+    <p id="currentEventDisplay" class="current-event">
+      
+      <strong><span id="currentEventNamePlayer"></span></strong>
+    </p>
+
+    <!-- USER DETAILS FORM (pehle yeh dikhega) -->
+    <section id="player-form">
+      <h2>Enter your details to start</h2>
+
+      <label>Organisation Name</label>
+      <input id="orgInput" type="text" />
+
+      <label>Your Name</label>
+      <input id="nameInput" type="text" />
+
+      <label>Designation</label>
+      <input id="desigInput" type="text" />
+
+      <button id="startBtn">Start Game</button>
+      <p id="formError" class="error"></p>
+    </section>
+
+
+    <!-- GAME AREA (form ke baad ye dikhega) -->
+    <section id="game-area" class="hidden">
+
+      <canvas id="gameCanvas" width="420" height="420"></canvas>
+
+      <div id="status-bar">
+        <span>Questions: <span id="qCount">0</span> / 8</span>
+        <span>Score: <span id="score">0</span></span>
+      </div>
+
+      <div id="question-panel">
+        <h3 id="questionText">Question will appear here</h3>
+
+        <div id="options"></div>
+
+        <button id="submitAnswerBtn" class="primary-btn">Submit Score / Finish</button>
+        <p id="answerError" class="error"></p>
+        <p id="feedback" class="feedback"></p>
+      </div>
+
+      <div id="controls">
+        <div class="arrow-row single">
+          <button class="arrow" id="upBtn">↑</button>
+        </div>
+        <div class="arrow-row">
+          <button class="arrow" id="leftBtn">←</button>
+          <button class="arrow" id="downBtn">↓</button>
+          <button class="arrow" id="rightBtn">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL SCREEN -->
+    <section id="final-screen" class="hidden">
+      <h2>🎉 Congratulations!</h2>
+      <p>You have completed the cyber security quiz.</p>
+      <p>Your final score: <strong><span id="finalScore"></span></strong></p>
+      <p>Your rank: <strong><span id="finalRank"></span></strong></p>
+      <p>Thank you for participating. Stay cyber-secure! 🔐</p>
+    </section>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

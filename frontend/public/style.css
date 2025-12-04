@@ -1,0 +1,232 @@
+/* Global */
+body {
+  background: #050608;
+  color: #00e5ff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container {
+  width: 95%;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.main-header h1 {
+  margin: 0;
+  color: #00ffd5;
+  font-size: 1.6rem;
+}
+
+.logo-shield {
+  font-size: 2rem;
+}
+
+.current-event {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+}
+
+/* Form */
+#player-form {
+  background: #0d1117;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+#player-form h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+#player-form label {
+  display: block;
+  margin-top: 12px;
+}
+
+#player-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #00ffd5;
+  background: #02030a;
+  color: #00e5ff;
+}
+
+#startBtn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background: #00ffd5;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Common */
+.hidden {
+  display: none;
+}
+
+.error {
+  color: #ff5c5c;
+  font-size: 0.9rem;
+}
+
+/* Game */
+#gameCanvas {
+  background: #000;
+  border: 2px solid #00ffd5;
+  margin-top: 20px;
+}
+
+/* Status bar */
+#status-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+}
+
+/* Question panel */
+#question-panel {
+  margin-top: 15px;
+  padding: 15px;
+  background: #0d1117;
+  border-radius: 10px;
+}
+
+#question-panel h3 {
+  margin-top: 0;
+}
+
+/* Options – each row looks like big pill with colour box */
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #00ffd5;
+  background: #02030a;
+  cursor: pointer;
+}
+
+.option-row span.option-text {
+  flex: 1;
+  text-align: left;
+  color: #00e5ff;
+  font-size: 0.95rem;
+}
+
+.option-row .color-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid #00e5ff;
+}
+
+.option-row.selected {
+  background: #00ffd5;
+}
+
+.option-row.selected span.option-text {
+  color: #000;
+}
+
+/* Feedback line (+5 / -2) */
+.feedback {
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+/* Buttons */
+.primary-btn {
+  margin-top: 10px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  background: #00ffd5;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Controls */
+#controls {
+  margin-top: 20px;
+}
+
+.arrow-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 4px 0;
+}
+
+.arrow-row.single {
+  margin-bottom: 2px;
+}
+
+.arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #00ffd5;
+  background: #02030a;
+  color: #00ffd5;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Final */
+#final-screen {
+  margin-top: 40px;
+  padding: 20px;
+  background: #0d1117;
+  border-radius: 10px;
+}
+
+/* Admin extras (table/log) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #00ffd5;
+  padding: 4px 6px;
+  font-size: 0.85rem;
+}
+
+th {
+  background: #02030a;
+}
+
+.log-box {
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #00ffd5;
+  border-radius: 6px;
+  padding: 8px;
+  background: #02030a;
+  font-size: 0.85rem;
+}

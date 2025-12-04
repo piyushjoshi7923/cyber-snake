@@ -1,0 +1,4 @@
+backend/node_modules/
+backend/cyber_snake
+backend/cyber_snake.db
+.env
